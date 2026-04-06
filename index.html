@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>安平鎮工所 - 自製長照 AI ALYA (初賽展示版)</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 300px 1fr; gap: 20px; }
+        header { grid-column: span 2; background: #2c3e50; color: white; padding: 15px 25px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; }
+        
+        /* FHIR 資源區塊樣式 */
+        .card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .section-title { font-size: 1.1em; font-weight: bold; color: #2980b9; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; margin-bottom: 15px; display: flex; align-items: center; }
+        
+        /* FHIR Patient 區塊 */
+        .patient-info p { margin: 8px 0; font-size: 0.95em; }
+        .label { color: #7f8c8d; font-weight: 600; width: 80px; display: inline-block; }
+
+        /* FHIR Observation 區塊 */
+        .vital-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .vital-card { background: #fff; border: 1px solid #e1e8ed; padding: 15px; border-radius: 8px; text-align: center; }
+        .vital-name { font-size: 0.9em; color: #7f8c8d; }
+        .vital-value { font-size: 1.8em; font-weight: bold; color: #2c3e50; margin: 10px 0; }
+        .vital-unit { font-size: 0.8em; color: #95a5a6; }
+
+        /* AI 聊天預留區塊 */
+        .ai-chat-placeholder { background: #ebf5fb; border: 2px dashed #3498db; border-radius: 10px; padding: 40px; text-align: center; color: #2980b9; font-style: italic; }
+        
+        /* IoT 狀態 */
+        .status-tag { padding: 4px 8px; border-radius: 4px; font-size: 0.8em; background: #2ecc71; color: white; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div>
+        <h1 style="margin:0; font-size: 1.5em;">自製長照 AI ALYA</h1>
+        <small>隊伍名稱：安平鎮工所</small>
+    </div>
+    <div>FHIR 大健康 Projectathon 初賽展示</div>
+</header>
+
+<div class="container" style="margin-top: 20px;">
+    <div class="sidebar">
+        <div class="card patient-info">
+            <div class="section-title">👤 FHIR Patient (病患)</div>
+            <p><span class="label">姓名：</span> 林先生</p>
+            <p><span class="label">身分證：</span> A123***789</p>
+            <p><span class="label">生日：</span> 1951-03-15</p>
+            <p><span class="label">性別：</span> 男性 (Male)</p>
+            <hr style="border:0; border-top:1px solid #eee;">
+            <div class="section-title" style="margin-top:10px;">🔌 設備 (Device)</div>
+            <p><span class="label">IoT 狀態：</span> <span class="status-tag">Connected</span></p>
+            <p><span class="label">平台：</span> Adafruit IO</p>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="card">
+            <div class="section-title">📊 生理指標紀錄 (FHIR Observation)</div>
+            <div class="vital-grid">
+                <div class="vital-card">
+                    <div class="vital-name">心率 (Heart Rate)</div>
+                    <div class="vital-value">75</div>
+                    <div class="vital-unit">bpm (LOINC 8867-4)</div>
+                </div>
+                <div class="vital-card">
+                    <div class="vital-name">收縮壓 (Systolic BP)</div>
+                    <div class="vital-value">128</div>
+                    <div class="vital-unit">mmHg (LOINC 8480-6)</div>
+                </div>
+                <div class="vital-card">
+                    <div class="vital-name">血糖 (Glucose)</div>
+                    <div class="vital-value">105</div>
+                    <div class="vital-unit">mg/dL (LOINC 15074-8)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">🤖 AI 智慧助手互動</div>
+            <div class="ai-chat-placeholder">
+                <p>Alya 虛擬助理連線中...</p>
+                <p><strong>(因為目前的自製 AI 只能在內網使用所以還無法展示，但未來會突破此類限制)</strong></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">⚙️ 系統核心技術說明</div>
+            <ul style="font-size: 0.9em; line-height: 1.6;">
+                <li><strong>PHR 整合：</strong> 系統核心圍繞個人健康紀錄 (PHR) 架構 [cite: 7, 36]。</li>
+                <li><strong>數據標準化：</strong> 採集數據即時封裝為符合 FHIR 標準的資料格式 [cite: 31, 38]。</li>
+                <li><strong>硬體支撐：</strong> 由 NVIDIA RTX™ 5000 Ada 提供本地運算算力，確保數據安全 [cite: 11]。</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
